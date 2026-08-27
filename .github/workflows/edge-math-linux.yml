@@ -1,0 +1,22 @@
+name: Edge Runtime Math Linux Control
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  native-linux-control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout isolated reproducer repository
+        uses: actions/checkout@v4
+
+      - name: Make runner executable
+        run: chmod +x run-linux.sh
+
+      - name: Run Deno and Edge Runtime controls
+        run: ./run-linux.sh
